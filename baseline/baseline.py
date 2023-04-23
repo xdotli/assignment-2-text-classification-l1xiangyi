@@ -219,7 +219,7 @@ for epoch in range(EPOCHS):
 
     print(f"Epoch {epoch + 1}/{EPOCHS}: train_loss={total_loss / len(train_loader):.4f}, val_loss={val_loss / len(val_loader):.4f}, val_acc={val_correct / len(val_dataset):.4f}")
 
-model_path = "/content/drive/MyDrive/dda4220/baseline.pth"
+model_path = "../nlp-getting-started/baseline.pth"
 
 # Save the model
 torch.save({
@@ -231,7 +231,7 @@ torch.save({
     'GLOVE_DIM': GLOVE_DIM,
 }, model_path)
 
-test_df = pd.read_csv('/content/drive/MyDrive/dda4220/test.csv')
+test_df = pd.read_csv('../nlp-getting-started/test.csv')
 
 
 def predict(model, test_data, device):
@@ -259,5 +259,5 @@ submission_df = pd.DataFrame({"id": test_df["id"], "target": test_preds})
 
 now = datetime.datetime.now()
 timestamp = now.strftime("%Y-%m-%d-%H-%M-%S")
-filename = "/content/drive/MyDrive/dda4220/submission_" + timestamp + ".csv"
+filename = "../nlp-getting-started/submission_" + timestamp + ".csv"
 submission_df.to_csv(filename, index=False)
